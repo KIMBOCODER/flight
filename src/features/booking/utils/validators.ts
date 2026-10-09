@@ -33,8 +33,8 @@ export function validateBookingForm(
     errors.paymentAccount =
       "Payment account is required";
 
-  if (!form.date.trim())
-    errors.date = "Date is required";
+  if (!form.travelDate.trim())
+    errors.travelDate = "Date is required";
 
   
 

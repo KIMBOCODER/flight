@@ -1,6 +1,5 @@
-import { TransportMode } from "./transport.types";
-
 export interface BookingFormData {
+  
   fullName: string;
   phone: string;
   nextOfKin: string;
@@ -20,4 +19,3 @@ export interface BookingFormData {
 export type BookingErrors = Partial<
   Record<keyof BookingFormData | "coverSrc" | "avatarSrc", string>
 >;
-;

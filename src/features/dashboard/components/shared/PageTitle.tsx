@@ -1,13 +1,15 @@
 interface PageTitleProps {
-  children: React.ReactNode;
+  title: string;
+  description: string;
 }
 
 export function PageTitle({
-  children,
+  title,description,
 }: PageTitleProps) {
   return (
     <h2 className="mb-6 text-2xl font-bold">
-      {children}
+      {title} {description}
     </h2>
+    
   );
 }

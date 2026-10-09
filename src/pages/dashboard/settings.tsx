@@ -26,9 +26,10 @@ export default function DashboardSettingsPage({
         description="Manage your account preferences and application settings."
       />
 
-      <DashboardCard>
-        Settings page.
-      </DashboardCard>
+<DashboardCard
+  title="Settings"
+  value="Settings page."
+/>     
     </DashboardLayout>
   );
 }

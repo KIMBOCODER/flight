@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { Section } from "../shared/Section";
 
@@ -35,7 +35,6 @@ export function BookingForm({ userId }: BookingFormProps) {
     setAvatarSrc,
     setShowPreview,
 
-    handleSubmit,
     handleChange,
     toggleMode,
   } = useBookingForm();

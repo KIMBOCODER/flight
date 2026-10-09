@@ -75,8 +75,8 @@ export function ProfilePreviewCard({
               <InfoCard label="Next Of Kin" value={form.nextOfKin} />
               <InfoCard label="Price" value={form.proposedPrice} />
               <InfoCard label="Payment Account" value={form.paymentAccount} />
-              <InfoCard label="Date" value={formatDate(form.date)} />
-              <InfoCard label="Time / Station" value={form.timeStation} />
+              <InfoCard label="Date" value={formatDate(form.travelDate)} />
+              <InfoCard label="Time / Station" value={form.travelTime} />
               <InfoCard label="Luggage Weight" value={form.luggageWeight} />
             </div>
 

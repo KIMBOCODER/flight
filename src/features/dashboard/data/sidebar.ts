@@ -10,9 +10,9 @@ import {
   LogOut,
 } from "lucide-react";
 
-import { SidebarItem } from "../types/sidebar.types";
+import { SidebarNavItem } from "../types/sidebar.types";
 
-export const sidebarItems: SidebarItem[] = [
+export const sidebarItems: SidebarNavItem[] = [
   {
     title: "Dashboard",
     href: "/dashboard",

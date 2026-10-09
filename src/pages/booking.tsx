@@ -3,7 +3,13 @@ import type { GetServerSideProps } from "next";
 import { BookingForm } from "@/features/booking/components/form/BookingForm";
 import { requireUser } from "@/features/auth/server/session";
 
-export default function BookingPage({ user }: any) {
+interface BookingPageProps {
+  user: {
+    id: string;
+  };
+}
+
+export default function BookingPage({ user }: BookingPageProps) {
   return <BookingForm userId={user.id} />;
 }
 

@@ -8,8 +8,10 @@ import {
   DashboardCard,
 } from "@/features/dashboard";
 
+
 interface DashboardProfilePageProps {
   user: {
+  
     id: string;
     username: string;
     role: "USER" | "ADMIN";
@@ -26,9 +28,10 @@ export default function DashboardProfilePage({
         description="Manage your account information."
       />
 
-      <DashboardCard >
-        Profile information goes here.
-      </DashboardCard>
+      <DashboardCard
+  title="Profile"
+  value="Profile information goes here."
+/>
     </DashboardLayout>
   );
 }

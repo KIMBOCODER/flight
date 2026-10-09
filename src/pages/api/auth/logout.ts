@@ -4,7 +4,7 @@ import type {
 } from "next";
 
 import {
-  AUTH_COOKIE, AUTH_COOKIE_MAX_AGE
+  AUTH_COOKIE,
 } from "@/features/auth/constant/auth";
 
 export default async function handler(

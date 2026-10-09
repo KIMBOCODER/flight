@@ -23,6 +23,7 @@ export function PopularDestinations() {
               className="overflow-hidden hover:shadow-xl transition-shadow cursor-pointer group"
             >
               <div className="relative h-48 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={destination.image}
                   alt={destination.city}

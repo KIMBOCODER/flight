@@ -31,12 +31,15 @@ export function BookingForm() {
     cabinClass: "economy",
   });
 
-  const update = (key: keyof BookingFormData, value: any) => {
-    setForm((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
+  const update = <K extends keyof BookingFormData>(
+  key: K,
+  value: BookingFormData[K],
+) => {
+  setForm((prev) => ({
+    ...prev,
+    [key]: value,
+  }));
+};
 
   const handleSearch = async () => {
     const result = await searchBookings({

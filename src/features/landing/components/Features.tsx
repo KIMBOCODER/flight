@@ -40,7 +40,7 @@ export function Features() {
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Why Choose SkyBooker</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            We're committed to making your travel booking experience seamless, secure, and stress-free
+            We&apos;re committed to making your travel booking experience seamless, secure, and stress-free
           </p>
         </div>
 

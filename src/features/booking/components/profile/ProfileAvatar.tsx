@@ -15,11 +15,14 @@ export function ProfileAvatar({
   return (
     <div className="w-20 h-20 rounded-full overflow-hidden bg-secondary border-4 border-card">
       {src ? (
-        <img
-          src={src}
-          alt={fullName}
-          className="w-full h-full object-cover"
-        />
+        <>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src}
+            alt={fullName}
+            className="w-full h-full object-cover"
+          />
+        </>
       ) : (
         <div className="w-full h-full flex items-center justify-center">
           {initials ? (

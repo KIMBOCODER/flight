@@ -9,8 +9,10 @@ import {
 import { requireUser } from "@/features/auth/server/session";
 
 
+
 interface DashboardBookingsPageProps {
   user: {
+
     id: string;
     username: string;
     role: "USER" | "ADMIN";
