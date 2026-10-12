@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 import {
@@ -19,6 +20,7 @@ const PERSONAL_FIELDS: (keyof BookingFormData)[] = [
 
 const TRANSPORT_FIELDS: (keyof BookingFormData)[] = [
   "proposedPrice",
+  "luggageWeight",
 ];
 
 const PAYMENT_FIELDS: (keyof BookingFormData)[] = [
@@ -39,38 +41,29 @@ function sectionComplete(
 export function useBookingForm() {
   const [saved, setSaved] = useState(false);
 
-  const [showPreview, setShowPreview] =
-    useState(false);
+  const [showPreview, setShowPreview] = useState(false);
 
   const [selectedModes, setSelectedModes] =
     useState<TransportMode[]>(["Car"]);
 
-  const [form, setForm] =
-    useState<BookingFormData>({
-      fullName: "",
-      phone: "",
-      nextOfKin: "",
+  const [form, setForm] = useState<BookingFormData>({
+    fullName: "",
+    phone: "",
+    nextOfKin: "",
+    currentLocation: "",
+    proposedLocation: "",
+    luggageWeight: "",
+    proposedPrice: "",
+    paymentAccount: "",
+    travelDate: "",
+    travelTime: "",
+  });
 
-      currentLocation: "",
-      proposedLocation: "",
+  const [errors, setErrors] = useState<BookingErrors>({});
 
-      luggageWeight: "",
-      proposedPrice: "",
+  const [coverSrc, setCoverSrc] = useState<string | null>(null);
 
-      paymentAccount: "",
-
-      travelDate: "",
-      travelTime: "",
-    });
-
-  const [errors, setErrors] =
-    useState<BookingErrors>({});
-
-  const [coverSrc, setCoverSrc] =
-    useState<string | null>(null);
-
-  const [avatarSrc, setAvatarSrc] =
-    useState<string | null>(null);
+  const [avatarSrc, setAvatarSrc] = useState<string | null>(null);
 
   const updateField = (
     key: keyof BookingFormData,
@@ -97,19 +90,21 @@ export function useBookingForm() {
       updateField(key, e.target.value);
     };
 
-  const toggleMode = (
-    mode: TransportMode
-  ) => {
+  const toggleMode = (mode: TransportMode) => {
     setSelectedModes((prev) =>
       prev.includes(mode)
         ? prev.filter((m) => m !== mode)
         : [...prev, mode]
     );
+
+    setErrors((prev) => ({
+      ...prev,
+      luggageWeight: undefined,
+    }));
   };
 
   const validate = () => {
-    const validation =
-      validateBookingForm(form);
+    const validation = validateBookingForm(form);
 
     if (selectedModes.length === 0) {
       validation.luggageWeight =
@@ -117,13 +112,11 @@ export function useBookingForm() {
     }
 
     if (!coverSrc) {
-      (validation as BookingErrors).coverSrc =
-        "Cover photo is required";
+      validation.coverSrc = "Cover photo is required";
     }
 
     if (!avatarSrc) {
-      (validation as BookingErrors).avatarSrc =
-        "Avatar photo is required";
+      validation.avatarSrc = "Avatar photo is required";
     }
 
     setErrors(validation);
@@ -131,9 +124,7 @@ export function useBookingForm() {
     return Object.keys(validation).length === 0;
   };
 
-  const handleSubmit = (
-    e: React.FormEvent
-  ) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validate()) return;
@@ -152,50 +143,42 @@ export function useBookingForm() {
     });
   };
 
-  const personalDone =
-    sectionComplete(
-      PERSONAL_FIELDS,
-      form
-    );
+  const personalDone = sectionComplete(
+    PERSONAL_FIELDS,
+    form
+  );
 
   const transportDone =
-    sectionComplete(
-      TRANSPORT_FIELDS,
-      form
-    ) && selectedModes.length > 0;
+    sectionComplete(TRANSPORT_FIELDS, form) &&
+    selectedModes.length > 0;
 
-  const paymentDone =
-    sectionComplete(
-      PAYMENT_FIELDS,
-      form
-    );
+  const paymentDone = sectionComplete(
+    PAYMENT_FIELDS,
+    form
+  );
 
   return {
     form,
     errors,
-
     saved,
     showPreview,
     selectedModes,
-
     coverSrc,
     avatarSrc,
 
     setCoverSrc,
     setAvatarSrc,
+    setShowPreview,
+    setForm,
+    setErrors,
 
     personalDone,
     transportDone,
     paymentDone,
 
-    setForm,
-    setShowPreview,
-
     updateField,
     handleChange,
-
     toggleMode,
-
     validate,
     handleSubmit,
   };
