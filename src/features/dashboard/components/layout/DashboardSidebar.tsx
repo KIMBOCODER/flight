@@ -1,5 +1,5 @@
-import { sidebarItems } from "../../data/sidebar";
 
+import { sidebarItems } from "../../data/sidebar";
 import { SidebarItem } from "./SidebarItem";
 
 interface DashboardSidebarProps {
@@ -14,18 +14,7 @@ export function DashboardSidebar({
   );
 
   return (
-    <aside
-      className="
-        hidden
-        lg:flex
-        w-72
-        flex-col
-        border-r
-        bg-card
-        px-5
-        py-6
-      "
-    >
+    <aside className="flex w-72 shrink-0 flex-col border-r bg-card px-5 py-6">
       <div className="mb-8">
         <h1 className="text-xl font-bold">
           Flight Booking
