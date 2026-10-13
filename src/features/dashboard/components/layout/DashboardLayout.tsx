@@ -1,3 +1,4 @@
+
 import type { ReactNode } from "react";
 
 import { DashboardSidebar } from "./DashboardSidebar";
@@ -19,23 +20,18 @@ export function DashboardLayout({
 }: DashboardLayoutProps) {
   return (
     <div className="flex min-h-screen bg-muted/40">
+      {/* Desktop sidebar: hidden on mobile */}
+      <div className="hidden lg:block">
+        <DashboardSidebar role={user.role} />
+      </div>
 
-      <DashboardSidebar
-        role={user.role}
-      />
-
-      <div className="flex flex-1 flex-col">
-
-        <DashboardTopbar
-          role={user.role}
-        />
+      <div className="flex min-w-0 flex-1 flex-col">
+        <DashboardTopbar role={user.role} />
 
         <main className="flex-1 p-6">
           {children}
         </main>
-
       </div>
-
     </div>
   );
 }
