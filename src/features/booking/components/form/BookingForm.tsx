@@ -1,5 +1,4 @@
 
-"use client";
 
 import { Section } from "../shared/Section";
 
